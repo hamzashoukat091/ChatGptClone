@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #fff
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+#container {
+  display: flex;
+  height: 100vh; /* Set the height to 100% of the viewport height */
+  overflow: hidden; /* Prevent the scroll bar on the container */
+}
+
+
+#sidebar {
+  background-color: #202123;
+  width: 250px;
+  padding: 10px;
+  height: 100vh; /* Set the height of the sidebar to 100% of the viewport height */
+  overflow-y: auto;
+  position: fixed; /* Fix the position of the sidebar */
+}
+
+#chat-area {
+  flex: 1;
+  background-color: #353740;
+  padding: 20px;
+  overflow-y: auto;
+  height: calc(100vh - 50px); /* Subtract the height of the input area */
+  margin-left: 250px; /* Add margin-left equal to the width of the sidebar */
+}
+
+.chat {
+  margin-bottom: 20px;
+}
+
+#new-chat {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+#input-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 250px;
+  right: 0;
+  width: calc(100% - 250px);
+  padding: 10px;
+  background-color: #353740;
+
+}
+
+.input-group {
+  flex: 1; /* Use flexbox to expand the text input field */
+}
+
+#input-text {
+  border: none;
+  outline: none;
+  background-color: #353740;
+  border-radius: 4px;
+  width: 100%;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+}
+
+#pdf-input {
+  display: none;
+}
+
+.btn {
+  margin-left: 10px;
+}
+
+#send-message, #upload-pdf {
+  background-color: #007bff;
+  color: #fff;
+  padding: 15px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.prompt-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.prompt-label {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.prompt-input {
+  color: black;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.prompt-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
