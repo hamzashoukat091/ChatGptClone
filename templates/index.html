@@ -1,6 +1,5 @@
 {% load static %}
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,17 +16,26 @@
         <div class="chat">Your first chat goes here.</div>
     </div>
 </div>
-<div id="input-area">
-    <div class="input-group">
-        <input type="text" name="message" id="input-text" class="form-control" placeholder="Type your message...">
-    </div>
-    <div>
-        <button id="send-message" class="btn btn-primary">Send</button>
-        <input type="file" name="pdf" id="pdf-input" accept="application/pdf" style="display:none;">
-        <button id="upload-pdf" class="btn btn-primary">Upload PDF</button>
-    </div>
+    <div id="api-form" class="hidden">
+  <form class="prompt-container" id="api-key-form">
+		<label class="prompt-label">Please enter your API key here:</label>
+		<input class="prompt-input" type="text" name="api_key" required>
+		<button class="prompt-button" type="submit">OK</button>
+	</form>
 </div>
-
+<div>
+    <form id="input-area" action="{% url 'check' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" name="message" id="input-text" class="form-control" placeholder="Type your message...">
+        </div>
+        <div>
+            <input type="file" name="pdf" id="pdf-input" accept="application/pdf" style="display:none;">
+            <button id="upload-pdf" type="button" class="btn btn-primary">Upload PDF</button>
+            <button id="send-message" type="submit" class="btn btn-primary">Send</button>
+        </div>
+    </form>
+</div>
 <script src="{% static 'js/chatgpt.js' %}"></script>
 </body>
 </html>

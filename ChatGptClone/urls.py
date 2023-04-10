@@ -19,5 +19,7 @@ from cloneapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index)
+    path('', views.index, name='index'),
+    path('check/', views.check, name='check'),
+    path('api/', views.api, name='api')
 ]
