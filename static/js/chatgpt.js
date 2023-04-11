@@ -110,26 +110,56 @@ const uploadPdfButton = document.getElementById('upload-pdf');
   });
 
   // Submit the form with AJAX
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    const formData = new FormData(form);
+  const formData = new FormData(form);
+  const messageInput = document.getElementById("input-text");
 
-    fetch(form.action, {
-      method: form.method,
-      body: formData
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      // Do something with the response data
-    })
-    .catch(error => {
-      console.error(error);
-    });
+  // Display the message in the chat area
+  function addMessageToChatArea(message, messageType) {
+  const messageDiv = document.createElement("div");
+  messageDiv.classList.add("message", messageType);
+  messageDiv.textContent = message;
+  chatArea.appendChild(messageDiv);
+}
+
+//function simulateBotResponse(userMessage) {
+//  // Simulate a simple bot response by reversing the user's message
+//  const botResponse = userMessage.split("").reverse().join("");
+//  setTimeout(() => {
+//    addMessageToChatArea(botResponse, "bot-message");
+//  }, 1000); // Add a 1 second delay for the bot response
+//}
+
+if (messageInput.value.trim()) {
+  addMessageToChatArea(messageInput.value, "user-message");
+//  simulateBotResponse(messageInput.value);
+
+  // Clear the input field for the message
+  messageInput.value = "";
+}
+
+
+
+  fetch(form.action, {
+    method: form.method,
+    body: formData
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+      // Display the bot's response
+      setTimeout(() => {
+    addMessageToChatArea(data.message, "bot-message");
+  }, 1000); // Add a 1 second delay for the bot response
+  })
+  .catch(error => {
+    console.error(error);
   });
+});

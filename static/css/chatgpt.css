@@ -78,6 +78,30 @@ body {
   border: 2px solid #ccc;
 }
 
+.message {
+  background-color: #007bff;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  display: inline-block;
+  max-width: 70%;
+  word-wrap: break-word;
+  color: #fff;
+  font-size: 16px;
+}
+
+.user-message {
+  background-color: #007bff;
+  float: right;
+  clear: both;
+}
+
+.bot-message {
+  background-color: #4caf50;
+  float: left;
+  clear: both;
+}
+
 
 
 .btn {

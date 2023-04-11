@@ -12,16 +12,14 @@ def check(request):
     if request.method == 'POST':
         message = request.POST.get('message')
         pdf = request.FILES.get('pdf', None)
-        print(message)
+        message = message[::-1]
         if pdf:
             print('PDF file uploaded:', pdf.name)
-            response_data = {"message": "Success!",
-                             "message": message,
+            response_data = {"message": message,
                              "PDF": pdf.name, }
         else:
             print('No PDF file uploaded.')
-            response_data = {"message": "Success!",
-                             "message": message,
+            response_data = {"message": message,
                              "PDF": "Not Uploaded", }
     return JsonResponse(response_data)
 
