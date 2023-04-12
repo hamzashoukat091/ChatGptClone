@@ -1,33 +1,36 @@
-# ChatGptClone
-ChatGPT - AI Chatbot powered by GPT-3
-ChatGPT is a web-based chatbot that utilizes the power of OpenAI's GPT-3 natural language processing technology to generate human-like responses to user input. This project is built using the Django web framework and includes a simple user interface for users to interact with the chatbot.
+# ChatGPT - AI Chatbot powered by GPT-3
 
-Getting Started
-To get started with ChatGPT, follow these steps:
+ChatGPT is a chatbot application powered by the GPT-3 language model from OpenAI. It can generate human-like responses to text prompts, making it a powerful tool for conversational interfaces and customer service applications.
 
-Clone the repository to your local machine.
-Set up a virtual environment and install the required packages by running the following commands:
-bash
-Copy code
-python -m venv env
-source env/bin/activate
-pip install -r requirements.txt
-Create a .env file in the project root directory with your OpenAI API key, like so:
-makefile
-Copy code
-API_KEY=<your_api_key_here>
-Run the Django development server:
-Copy code
-python manage.py runserver
-Navigate to http://localhost:8000/ in your web browser to start using the chatbot.
-Usage
-ChatGPT is simple to use. Simply type a message into the input field and hit "Send" to receive a response from the chatbot. You can also upload a PDF file to provide additional context for the chatbot.
+## Installation
 
-Contributing
-Contributions to this project are welcome. If you encounter any bugs or have suggestions for new features, please submit an issue on GitHub.
+To install ChatGPT, follow these steps:
 
-Credits
-This project was built by [your_name_here] using the Django web framework and OpenAI's GPT-3 API.
+1. Clone the repository to your local machine.
+2. Create a virtual environment and activate it.
+3. Install the required packages using pip.
+4. Set the environment variable for your OpenAI API key.
+5. Run the server using the `manage.py` script.
 
-License
-This project is licensed under the MIT License.
+## Usage
+
+To use ChatGPT, follow these steps:
+
+1. Open the application in your web browser.
+2. Type a message into the input field and hit enter.
+3. Wait for the response from ChatGPT.
+4. Repeat as desired.
+
+## Contributing
+
+To contribute to ChatGPT, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch with a descriptive name.
+3. Make your changes and commit them to the new branch.
+4. Push the new branch to your forked repository.
+5. Submit a pull request to the original repository.
+
+## License
+
+ChatGPT is licensed under the MIT license. See LICENSE for more information.
