@@ -30,7 +30,3 @@ To contribute to ChatGPT, follow these steps:
 3. Make your changes and commit them to the new branch.
 4. Push the new branch to your forked repository.
 5. Submit a pull request to the original repository.
-
-## License
-
-ChatGPT is licensed under the MIT license. See LICENSE for more information.
