@@ -1,1 +1,31 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Django specific
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media
+
+# Virtual environment
+venv/
+.venv/
+ENV/
+
+# IDE files
+.idea/
+.vscode/
+
+# Environment variables and secrets
 .env
