@@ -23,7 +23,7 @@ window.onload = function() {
 })
 .then(response => response.json())
   .then(data => {
-    console.log(data);
+//    console.log(data);
     formContainer.classList.add("hidden");
   })
   .catch(error => {
@@ -32,8 +32,6 @@ window.onload = function() {
 
   });
 };
-
-
 
 newChatButton.addEventListener('click', () => {
   const prevChat = chatArea.querySelector('.chat');
@@ -55,54 +53,9 @@ sidebar.addEventListener('click', (e) => {
   }
 });
 
-//const inputText = document.getElementById('input-text');
-//const sendMessageButton = document.getElementById('send-message');
-
-//const pdfInput = document.getElementById('pdf-input');
-//
-//function appendMessageToChatArea(message) {
-//  const messageDiv = document.createElement('div');
-//  messageDiv.classList.add('message');
-//  messageDiv.innerHTML = message;
-//  chatArea.appendChild(messageDiv);
-//}
-//
-//sendMessageButton.addEventListener('click', () => {
-//  if (inputText.value.trim()) {
-//    appendMessageToChatArea(inputText.value);
-//    inputText.value = '';
-//  }
-//});
-//
-//inputText.addEventListener('keypress', (e) => {
-//  if (e.key === 'Enter' && inputText.value.trim()) {
-//    appendMessageToChatArea(inputText.value);
-//    inputText.value = '';
-//  }
-//});
-//
-//uploadPdfButton.addEventListener('click', () => {
-//  pdfInput.click();
-//});
-//
-//pdfInput.addEventListener('change', (e) => {
-//  const file = e.target.files[0];
-//  if (file) {
-//    const reader = new FileReader();
-//    reader.onload = (e) => {
-//      const pdfLink = `<a href="${e.target.result}" target="_blank">View PDF: ${file.name}</a>`;
-//      appendMessageToChatArea(pdfLink);
-//    };
-//    reader.readAsDataURL(file);
-//    pdfInput.value = '';
-//  }
-//});
-//
-//
-
 const form = document.getElementById("input-area");
 const uploadPdfButton = document.getElementById('upload-pdf');
- const fileInput = document.getElementById("pdf-input");
+const fileInput = document.getElementById("pdf-input");
 
   // Show file input when the "Upload PDF" button is clicked
   uploadPdfButton.addEventListener("click", () => {
@@ -115,33 +68,47 @@ form.addEventListener("submit", (e) => {
 
   const formData = new FormData(form);
   const messageInput = document.getElementById("input-text");
+  const fileInput = document.getElementById('pdf-input');
+  const uploadedFile = fileInput.files[0];
+  let pdfLink = null;
+
+  if (uploadedFile) {
+    pdfLink = createPdfLink(uploadedFile);
+  }
+
+    function createPdfLink(file) {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(file);
+      link.target = '_blank';
+      link.textContent = `View PDF: ${file.name}`;
+      return link;
+    }
 
   // Display the message in the chat area
-  function addMessageToChatArea(message, messageType) {
+  function addMessageToChatArea(message, messageType, pdfLink = null) {
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("message", messageType);
   messageDiv.textContent = message;
+  if (pdfLink) {
+    const breakElement = document.createElement('br');
+    messageDiv.appendChild(breakElement);
+    messageDiv.appendChild(pdfLink);
+  }
   chatArea.appendChild(messageDiv);
+  scrollToBottom();
 }
 
-//function simulateBotResponse(userMessage) {
-//  // Simulate a simple bot response by reversing the user's message
-//  const botResponse = userMessage.split("").reverse().join("");
-//  setTimeout(() => {
-//    addMessageToChatArea(botResponse, "bot-message");
-//  }, 1000); // Add a 1 second delay for the bot response
-//}
+function scrollToBottom() {
+  chatArea.scrollTop = chatArea.scrollHeight;
+}
 
 if (messageInput.value.trim()) {
-  addMessageToChatArea(messageInput.value, "user-message");
-//  simulateBotResponse(messageInput.value);
+  addMessageToChatArea(messageInput.value, 'user-message', pdfLink);
 
-  // Clear the input field for the message
-  messageInput.value = "";
+    // Clear the input field for the message and file input
+    messageInput.value = '';
+    fileInput.value = '';
 }
-
-
-
   fetch(form.action, {
     method: form.method,
     body: formData
@@ -153,7 +120,6 @@ if (messageInput.value.trim()) {
     return response.json();
   })
   .then(data => {
-    console.log(data);
       // Display the bot's response
       setTimeout(() => {
     addMessageToChatArea(data.message, "bot-message");
