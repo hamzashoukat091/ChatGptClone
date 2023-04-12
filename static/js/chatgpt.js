@@ -5,7 +5,7 @@ let chatCount = 1;
 
 window.onload = function() {
   const formContainer = document.getElementById("api-form");
-  formContainer.classList.remove("hidden");
+//  formContainer.classList.remove("hidden");
 
   const form = document.getElementById("api-key-form");
   form.addEventListener("submit", (e) => {
